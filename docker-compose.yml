@@ -1,7 +1,7 @@
 version: '3'
 
 services: 
-  api:
+  node_api:
     build: .
     ports: 
     - "4000:4000"
@@ -9,6 +9,8 @@ services:
     - LETSENCRYPT_HOST=node.marcwitney.com
     - VIRTUAL_HOST=node.marcwitney.com
     - LETSENCRYPT_EMAIL=marcwitney@live.com
+    - VIRTUAL_PORT=4000
+
 
 networks:  
   default:
