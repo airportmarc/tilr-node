@@ -1,0 +1,16 @@
+version: '3'
+
+services: 
+  api:
+    build: .
+    ports: 
+    - "4000:4000"
+    environment: 
+    - LETSENCRYPT_HOST=node.marcwitney.com
+    - VIRTUAL_HOST=node.marcwitney.com
+    - LETSENCRYPT_EMAIL=marcwitney@live.com
+
+networks:  
+  default:
+    external:
+      name: nginx-net
