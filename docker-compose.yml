@@ -10,9 +10,15 @@ services:
     - VIRTUAL_HOST=node.marcwitney.com
     - LETSENCRYPT_EMAIL=marcwitney@live.com
     - VIRTUAL_PORT=4000
+    labels:
+      container_group: logging
+    logging:
+      driver: gelf
+      options:
+        gelf-address: udp://172.16.0.38:12201
+        labels: container_group
 
-
-networks:  
+networks:
   default:
     external:
-      name: nginx-net
+      name: monitoring_logging
