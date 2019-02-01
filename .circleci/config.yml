@@ -17,10 +17,6 @@ jobs:
     working_directory: ~/repo
 
     steps:
-      - add_ssh_keys:
-          fingerprints:
-          - "f5:82:2e:f0:61:7e:2b:0e:5b:74:1e:36:5c:b4:2f:25"
-
       - checkout
 
       # Download and cache dependencies
@@ -36,12 +32,20 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+      - add_ssh_keys:
+          fingerprints:
+            - "f5:82:2e:f0:61:7e:2b:0e:5b:74:1e:36:5c:b4:2f:25"
       # run tests!
       - run: yarn test
       - deploy:
           name: digital-ocean
           command: ssh marc@159.203.42.163 cd ~/tilr-node; git pull; docker-compose up --build
+      # - deploy:
+      #     name: possible
+      #     command: |
+      #       if [[ "${CIRCLE_BRANCH}" == "*epic*" ]]; then
+              # push to our awesome place
+      #       fi
 
 
 
