@@ -18,7 +18,6 @@ jobs:
 
     steps:
       - checkout
-      - add_ssh_keys
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -35,7 +34,7 @@ jobs:
       - run: yarn test
       - deploy:
           name: digital-ocean
-          command: ssh marc@159.203.42.163 cd ~/tilr-node; git pull; docker-compose up --build
+          command: ssh StrictHostKeyChecking no marc@159.203.42.163 cd ~/tilr-node; git pull; docker-compose up --build
       # - deploy:
       #     name: possible
       #     command: |
