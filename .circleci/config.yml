@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - checkout
-
+      - add_ssh_keys
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -32,10 +32,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - add_ssh_keys:
-          fingerprints:
-            - "0b:07:92:21:c3:91:57:29:17:89:a9:b4:0d:79:6f:10"
-      # run tests!
       - run: yarn test
       - deploy:
           name: digital-ocean
