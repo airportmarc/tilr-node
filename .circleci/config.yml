@@ -35,5 +35,9 @@ jobs:
         
       # run tests!
       - run: yarn test
+      - deploy:
+          name: digital-ocean
+          command: ssh marc@159.203.42.163 cd ~/tilr-node; git pull; docker-compose up --build
+
 
 
