@@ -34,7 +34,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - add_ssh_keys:
           fingerprints:
-            - "f5:82:2e:f0:61:7e:2b:0e:5b:74:1e:36:5c:b4:2f:25"
+            - "0b:07:92:21:c3:91:57:29:17:89:a9:b4:0d:79:6f:10"
       # run tests!
       - run: yarn test
       - deploy:
