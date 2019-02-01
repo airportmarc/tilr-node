@@ -34,7 +34,7 @@ jobs:
       - run: yarn test
       - deploy:
           name: digital-ocean
-          command: ssh  -o StrictHostKeyChecking=no marc@159.203.42.163 cd /home/marc/tilr-node; ls; pwd; git pull; sudo docker-compose up --build
+          command: ssh  -o StrictHostKeyChecking=no marc@159.203.42.163 '/home/marc/deploy.sh node'
       # - deploy:
       #     name: possible
       #     command: |
